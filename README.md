@@ -47,6 +47,85 @@ yarn dev
 yarn test
 ```
 
+## ICO Token
+
+Create .env from .env.example from root directory. Remember to fill the value for deployed addresses.
+
+```
+ETHERSCAN_API_KEY=ABC123ABC123ABC123ABC123ABC123ABC1
+ROPSTEN_PROVIDER_URL=https://eth-ropsten.alchemyapi.io/v2/<YOUR ALCHEMY KEY>
+PRIVATE_KEY=<YOUR PRIVATE KEY>
+VITE_ITMAN_TOKEN_ADDRESS=<YOUR DEPLOYED SMART CONTRACT ADDRESS>
+```
+
+Then deploy to specific network, e.g: Ropsten
+
+```sh
+npx hardhat run scripts/deploy_itmantokencrowdsale.js --network ropsten
+```
+
+Output:
+
+```sh
+Generating typings for: 0 artifacts in dir: src/types for target: ethers-v5
+Successfully generated 3 typings!
+Successfully generated 3 typings for external artifacts!
+ITManToken deployed to: 0xbaD34eF2df4Df479856e7db0A12F94878975777D
+Name ITManToken
+Symbol ITM
+Decimals 18
+Total Supply BigNumber { _hex: '0xd3c21bcecceda1000000', _isBigNumber: true }
+Owner 0x096cd10D7BEF8D5923b18b18E9f79CA230ee2285
+ITManTokenCrowdsale deployed to: 0xAD3bb85626e00d80392226352BF588E087d23dE0
+```
+
+Next step is verifying the IT Man Token
+
+```sh
+npx hardhat verify --network ropsten 0xbaD34eF2df4Df479856e7db0A12F94878975777D
+```
+
+Output:
+
+```sh
+Nothing to compile
+Generating typings for: 0 artifacts in dir: src/types for target: ethers-v5
+Successfully generated 3 typings!
+Successfully generated 3 typings for external artifacts!
+Compiling 1 file with 0.8.4
+Successfully submitted source code for contract
+contracts/ITManToken.sol:ITManToken at 0xbaD34eF2df4Df479856e7db0A12F94878975777D
+for verification on Etherscan. Waiting for verification result...
+
+Successfully verified contract ITManToken on Etherscan.
+https://ropsten.etherscan.io/address/0xbaD34eF2df4Df479856e7db0A12F94878975777D#code
+```
+
+Finally, verify the IT Man Token Crowdsale
+
+```sh
+npx hardhat verify --network ropsten 0xAD3bb85626e00d80392226352BF588E087d23dE0 500 0x096cd10D7BEF8D5923b18b18E9f79CA230ee2285 0xbaD34eF2df4Df479856e7db0A12F94878975777D 0x096cd10D7BEF8D5923b18b18E9f79CA230ee2285
+```
+
+Output:
+
+```sh
+Nothing to compile
+Generating typings for: 0 artifacts in dir: src/types for target: ethers-v5
+Successfully generated 3 typings!
+Successfully generated 3 typings for external artifacts!
+Compiling 1 file with 0.8.4
+
+... some warnings
+
+Successfully submitted source code for contract
+contracts/ITManTokenCrowdsale.sol:ITManTokenCrowdsale at 0xAD3bb85626e00d80392226352BF588E087d23dE0
+for verification on Etherscan. Waiting for verification result...
+
+Successfully verified contract ITManTokenCrowdsale on Etherscan.
+https://ropsten.etherscan.io/address/0xAD3bb85626e00d80392226352BF588E087d23dE0#code
+```
+
 ## Hardhat guideline
 
 This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
