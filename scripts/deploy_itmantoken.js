@@ -16,7 +16,7 @@ async function main() {
 
   // We get the contract to deploy
   const ITManToken = await hre.ethers.getContractFactory("ITManToken");
-  const itManToken = await hre.upgrades.deployProxy(ITManToken);
+  const itManToken = await ITManToken.deploy();
 
   await itManToken.deployed();
   console.log("ITManToken deployed to:", itManToken.address);

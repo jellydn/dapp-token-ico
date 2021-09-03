@@ -1,10 +1,10 @@
 const { expect } = require("chai");
-const { ethers, upgrades } = require("hardhat");
+const { ethers } = require("hardhat");
 
 describe("ITManToken", () => {
   it("Should return the token name", async () => {
     const ITManToken = await ethers.getContractFactory("ITManToken");
-    const itManToken = await upgrades.deployProxy(ITManToken);
+    const itManToken = await ITManToken.deploy();
     await itManToken.deployed();
 
     expect(await itManToken.name()).to.equal("ITManToken");
@@ -12,7 +12,7 @@ describe("ITManToken", () => {
 
   it("Should return the token symbol", async () => {
     const ITManToken = await ethers.getContractFactory("ITManToken");
-    const itManToken = await upgrades.deployProxy(ITManToken);
+    const itManToken = await ITManToken.deploy();
     await itManToken.deployed();
 
     expect(await itManToken.symbol()).to.equal("ITM");
@@ -20,7 +20,7 @@ describe("ITManToken", () => {
 
   it("Should return decimals", async () => {
     const ITManToken = await ethers.getContractFactory("ITManToken");
-    const itManToken = await upgrades.deployProxy(ITManToken);
+    const itManToken = await ITManToken.deploy();
     await itManToken.deployed();
 
     expect(await itManToken.decimals()).to.equal(18);
@@ -28,7 +28,7 @@ describe("ITManToken", () => {
 
   it("Should have total supply", async () => {
     const ITManToken = await ethers.getContractFactory("ITManToken");
-    const itManToken = await upgrades.deployProxy(ITManToken);
+    const itManToken = await ITManToken.deploy();
     await itManToken.deployed();
 
     expect(await itManToken.totalSupply()).to.equal(ethers.BigNumber.from("1000000000000000000000000"));

@@ -1,4 +1,4 @@
-# Welcome to dapp-starter 👋
+# Welcome to dapp-token-ico 👋
 
 ![Version](https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
@@ -6,9 +6,9 @@
 
 > Opinionated Dapp Starter Template
 
-## 🏠 [Homepage](https://dapp-starter.productsway.com)
+## 🏠 [Homepage](https://dapp-token-ico.productsway.com)
 
-## ✨ [Demo](https://dapp-starter.productsway.com)
+## ✨ [Demo](https://dapp-token-ico.productsway.com)
 
 ## Screenshot
 
@@ -110,7 +110,7 @@ npx hardhat run --network localhost scripts/upgrade_box.js
 
 ## Examples
 
-- [Simple Store App](https://github.com/jellydn/dapp-starter/pull/20): counter-like smart contract, read/write value and listen to event from smart contract.
+- [Simple Store App](https://github.com/jellydn/dapp-token-ico/pull/20): counter-like smart contract, read/write value and listen to event from smart contract.
 
 ## Author
 
@@ -122,7 +122,7 @@ npx hardhat run --network localhost scripts/upgrade_box.js
 
 ## Stargazers 🌟
 
-[![Stargazers repo roster for jellydn/dapp-starter](https://reporoster.com/stars/jellydn/dapp-starter)](https://github.com/jellydn/dapp-starter/stargazers)
+[![Stargazers repo roster for jellydn/dapp-token-ico](https://reporoster.com/stars/jellydn/dapp-token-ico)](https://github.com/jellydn/dapp-token-ico/stargazers)
 
 ## Show your support
 
