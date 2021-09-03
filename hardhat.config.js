@@ -46,6 +46,10 @@ module.exports = {
       url: process.env.ROPSTEN_PROVIDER_URL || "",
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    rinkeby: {
+      url: process.env.RINKEBY_PROVIDER_URL || "",
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
     tomotestnet: {
       chainId: 89,
       url: process.env.TOMO_PROVIDER_URL || "https://rpc.testnet.tomochain.com",
