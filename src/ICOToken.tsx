@@ -1,0 +1,187 @@
+import { formatUnits, formatEther } from "@ethersproject/units";
+import { useWeb3React } from "@web3-react/core";
+import { BigNumber, ethers } from "ethers";
+import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+
+import ITManTokenArtifacts from "./artifacts/contracts/ITManToken.sol/ITManToken.json";
+import ITManTokenCrowdsaleArtifacts from "./artifacts/contracts/ITManTokenCrowdsale.sol/ITManTokenCrowdsale.json";
+import logger from "./logger";
+import { ITManToken } from "./types/ITManToken";
+import { ITManTokenCrowdsale } from "./types/ITManTokenCrowdsale";
+
+interface Props {
+  crowdsaleAddress: string;
+}
+
+declare global {
+  interface Window {
+    ethereum: ethers.providers.ExternalProvider;
+  }
+}
+
+const providerUrl = import.meta.env.VITE_PROVIDER_URL;
+
+const TokenInfo = ({ tokenAddress }: { tokenAddress: string }) => {
+  const { library } = useWeb3React();
+
+  const fetchTokenInfo = async () => {
+    logger.warn("fetchTokenInfo");
+    const provider = library || new ethers.providers.Web3Provider(window.ethereum || providerUrl);
+    const tokenContract = new ethers.Contract(tokenAddress, ITManTokenArtifacts.abi, provider) as ITManToken;
+    const name = await tokenContract.name();
+    const symbol = await tokenContract.symbol();
+    const decimals = await tokenContract.decimals();
+    const totalSupply = await tokenContract.totalSupply();
+    logger.warn("token info", { name, symbol, decimals });
+    return {
+      name,
+      symbol,
+      decimals,
+      totalSupply,
+    };
+  };
+  const { error, isLoading, data } = useQuery(["token-info", tokenAddress], fetchTokenInfo, {
+    enabled: tokenAddress !== "",
+  });
+
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
+
+  return (
+    <div className="flex flex-col">
+      <button className="btn">
+        {data?.name}
+        <div className="ml-2 badge">{data?.symbol}</div>
+        <div className="ml-2 badge badge-info">{data?.decimals}</div>
+      </button>
+
+      <div className="shadow stats">
+        <div className="stat">
+          <div className="stat-title">Total Supply</div>
+          <div className="stat-value">{formatUnits(data?.totalSupply ?? 0)}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+async function requestAccount() {
+  if (window.ethereum?.request) return window.ethereum.request({ method: "eth_requestAccounts" });
+
+  throw new Error("Missing install Metamask. Please access https://metamask.io/ to install extension on your browser");
+}
+
+const ICOToken = ({ crowdsaleAddress }: Props) => {
+  const { library, account } = useWeb3React();
+  const [tokenAddress, setTokenAddress] = useState("");
+  const [availableForSale, setAvailableForSale] = useState("0");
+  const [price, setPrice] = useState("0");
+  const [amount, setAmount] = useState(1);
+
+  // set erc20 token address to state
+  useEffect(() => {
+    const fetchTokenAddress = () => {
+      logger.warn("fetchTokenWallet");
+      const provider = library || new ethers.providers.Web3Provider(window.ethereum || providerUrl);
+      const contract = new ethers.Contract(
+        crowdsaleAddress,
+        ITManTokenCrowdsaleArtifacts.abi,
+        provider
+      ) as ITManTokenCrowdsale;
+      contract.token().then(setTokenAddress).catch(logger.error);
+      contract
+        .remainingTokens()
+        .then((total) => setAvailableForSale(BigNumber.from(total).toString()))
+        .catch(logger.error);
+      contract
+        .rate()
+        .then((rate) => setPrice(BigNumber.from(rate).toString()))
+        .catch(logger.error);
+    };
+    fetchTokenAddress();
+  }, []);
+
+  const totalCost = formatEther(amount * Number(formatUnits(price, "wei")));
+  // buy token base on quantity
+  const buyTokens = async () => {
+    const provider = library || new ethers.providers.Web3Provider(window.ethereum || providerUrl);
+    const signer = provider.getSigner();
+    try {
+      if (!account) {
+        await requestAccount();
+        return;
+      }
+      const txPrams = {
+        to: crowdsaleAddress,
+        value: ethers.BigNumber.from(amount).mul(price),
+      };
+      logger.warn({ txPrams });
+      const transaction = await signer.sendTransaction(txPrams);
+
+      await transaction.wait();
+    } catch (error) {
+      logger.error(error);
+    }
+  };
+
+  return (
+    <div className="relative py-3 sm:max-w-5xl sm:mx-auto">
+      <div className="flex items-center w-full px-4 py-10 bg-cover card bg-base-200">
+        <TokenInfo tokenAddress={tokenAddress} />
+        <div className="text-center shadow-2xl card">
+          <div className="card-body">
+            <h2 className="card-title">ITMan Token</h2>
+            <div className="shadow stats">
+              <div className="stat">
+                <div className="stat-title">Available for sale</div>
+                <div className="stat-value">{formatUnits(availableForSale, "ether")}</div>
+              </div>
+              <div className="stat">
+                <div className="stat-title">Price</div>
+                <div className="stat-value">{formatUnits(price, "wei")} Wei</div>
+              </div>
+              <div className="stat">
+                <div className="stat-title">Order Quantity</div>
+                <div className="stat-value">{amount}</div>
+              </div>
+            </div>
+
+            <input
+              type="range"
+              max="1000"
+              value={amount}
+              onChange={(evt) => setAmount(evt.target.valueAsNumber)}
+              className="range range-accent"
+            />
+            <div>
+              <div className="justify-center card-actions">
+                <button onClick={buyTokens} type="button" className="btn btn-outline btn-accent">
+                  Buy Now
+                </button>
+              </div>
+              <div className="badge badge-md">Total: {totalCost} ETH</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="divider"></div>
+
+        <div className="items-center justify-center max-w-2xl px-4 py-4 mx-auto text-xl border-orange-500 lg:flex md:flex">
+          <div className="p-2 font-semibold">
+            <a
+              href={`https://ropsten.etherscan.io/address/${tokenAddress}`}
+              target="_blank"
+              className="px-4 py-1 ml-2 text-white bg-orange-500 rounded-full shadow focus:outline-none"
+              rel="noreferrer"
+            >
+              View Token on Etherscan
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ICOToken;

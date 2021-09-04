@@ -55,7 +55,8 @@ Create .env from .env.example from root directory. Remember to fill the value fo
 ETHERSCAN_API_KEY=ABC123ABC123ABC123ABC123ABC123ABC1
 ROPSTEN_PROVIDER_URL=https://eth-ropsten.alchemyapi.io/v2/<YOUR ALCHEMY KEY>
 PRIVATE_KEY=<YOUR PRIVATE KEY>
-VITE_ITMAN_TOKEN_ADDRESS=<YOUR DEPLOYED SMART CONTRACT ADDRESS>
+VITE_CROWDSALE_ADDRESS=<YOUR DEPLOYED SMART CONTRACT ADDRESS>
+VITE_PROVIDER_URL=https://eth-ropsten.alchemyapi.io/v2/<YOUR ALCHEMY KEY>
 ```
 
 Then deploy to specific network, e.g: Ropsten

@@ -36,7 +36,7 @@ export function getLibrary(provider: any): Web3Provider {
 
 export default function Demo() {
   const context = useWeb3React<Web3Provider>();
-  const { connector, library, account, activate, deactivate, active, error } = context;
+  const { connector, activate, deactivate, active, error } = context;
 
   // handle logic to recognize the connector currently being activated
   const [activatingConnector, setActivatingConnector] = React.useState<any>();
@@ -56,9 +56,8 @@ export default function Demo() {
   const connected = injected === connector;
   const disabled = !triedEager || !!activatingConnector || connected || !!error;
   return (
-    <>
-      <Header />
-      <div>
+    <Header>
+      <div className="flex flex-row w-full ml-4 mr-4">
         <button
           className="btn btn-primary"
           disabled={disabled}
@@ -77,43 +76,21 @@ export default function Demo() {
           </div>
           Connect with MetaMask
         </button>
-      </div>
-      <div>
-        {(active || error) && (
-          <button
-            className="btn btn-secondary"
-            onClick={() => {
-              deactivate();
-            }}
-          >
-            Deactivate
-          </button>
-        )}
+        <div>
+          {(active || error) && (
+            <button
+              className="btn btn-secondary"
+              onClick={() => {
+                deactivate();
+              }}
+            >
+              Deactivate
+            </button>
+          )}
 
-        {!!error && <h4 style={{ marginTop: "1rem", marginBottom: "0" }}>{getErrorMessage(error)}</h4>}
+          {!!error && <h4 style={{ marginTop: "1rem", marginBottom: "0" }}>{getErrorMessage(error)}</h4>}
+        </div>
       </div>
-
-      <div className="divider" />
-      <div>
-        {!!(library && account) && (
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              library
-                .getSigner(account)
-                .signMessage("👋")
-                .then((signature: any) => {
-                  window.alert(`Success!\n\n${signature}`);
-                })
-                .catch((error: any) => {
-                  window.alert("Failure!" + (error && error.message ? `\n\n${error.message}` : ""));
-                });
-            }}
-          >
-            Sign Message
-          </button>
-        )}
-      </div>
-    </>
+    </Header>
   );
 }

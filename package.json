@@ -19,6 +19,7 @@
     "loglevel": "1.7.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-query": "^3.21.1",
     "web3-react": "5.0.5"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  VITE_ITMAN_TOKEN_ADDRESS: string;
+  VITE_CROWDSALE_ADDRESS: string;
+  VITE_PROVIDER_URL: string;
 }
