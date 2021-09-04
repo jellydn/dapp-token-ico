@@ -56,6 +56,10 @@ declare module "hardhat/types/runtime" {
       name: "ITManTokenCrowdsale",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ITManTokenCrowdsale__factory>;
+    getContractFactory(
+      name: "TimedCrowdsale",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.TimedCrowdsale__factory>;
 
     // default types
     getContractFactory(

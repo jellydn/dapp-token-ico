@@ -12,6 +12,7 @@ export type { Crowdsale } from "./Crowdsale";
 export type { Greeter } from "./Greeter";
 export type { ITManToken } from "./ITManToken";
 export type { ITManTokenCrowdsale } from "./ITManTokenCrowdsale";
+export type { TimedCrowdsale } from "./TimedCrowdsale";
 
 export { Ownable__factory } from "./factories/Ownable__factory";
 export { ERC20__factory } from "./factories/ERC20__factory";
@@ -24,3 +25,4 @@ export { Crowdsale__factory } from "./factories/Crowdsale__factory";
 export { Greeter__factory } from "./factories/Greeter__factory";
 export { ITManToken__factory } from "./factories/ITManToken__factory";
 export { ITManTokenCrowdsale__factory } from "./factories/ITManTokenCrowdsale__factory";
+export { TimedCrowdsale__factory } from "./factories/TimedCrowdsale__factory";

@@ -20,7 +20,7 @@ import {
   CallOverrides,
 } from "ethers";
 
-interface ITManTokenCrowdsaleInterface extends ethers.utils.Interface {
+interface TimedCrowdsaleInterface extends ethers.utils.Interface {
   functions: {
     "buyTokens(address)": FunctionFragment;
     "closingTime()": FunctionFragment;
@@ -28,9 +28,7 @@ interface ITManTokenCrowdsaleInterface extends ethers.utils.Interface {
     "isOpen()": FunctionFragment;
     "openingTime()": FunctionFragment;
     "rate()": FunctionFragment;
-    "remainingTokens()": FunctionFragment;
     "token()": FunctionFragment;
-    "tokenWallet()": FunctionFragment;
     "wallet()": FunctionFragment;
     "weiRaised()": FunctionFragment;
   };
@@ -47,15 +45,7 @@ interface ITManTokenCrowdsaleInterface extends ethers.utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "rate", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "remainingTokens",
-    values?: undefined
-  ): string;
   encodeFunctionData(functionFragment: "token", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "tokenWallet",
-    values?: undefined
-  ): string;
   encodeFunctionData(functionFragment: "wallet", values?: undefined): string;
   encodeFunctionData(functionFragment: "weiRaised", values?: undefined): string;
 
@@ -71,15 +61,7 @@ interface ITManTokenCrowdsaleInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "rate", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "remainingTokens",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "token", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "tokenWallet",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "wallet", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "weiRaised", data: BytesLike): Result;
 
@@ -92,7 +74,7 @@ interface ITManTokenCrowdsaleInterface extends ethers.utils.Interface {
   getEvent(nameOrSignatureOrTopic: "TokensPurchased"): EventFragment;
 }
 
-export class ITManTokenCrowdsale extends BaseContract {
+export class TimedCrowdsale extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -133,7 +115,7 @@ export class ITManTokenCrowdsale extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: ITManTokenCrowdsaleInterface;
+  interface: TimedCrowdsaleInterface;
 
   functions: {
     buyTokens(
@@ -151,11 +133,7 @@ export class ITManTokenCrowdsale extends BaseContract {
 
     rate(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    remainingTokens(overrides?: CallOverrides): Promise<[BigNumber]>;
-
     token(overrides?: CallOverrides): Promise<[string]>;
-
-    tokenWallet(overrides?: CallOverrides): Promise<[string]>;
 
     wallet(overrides?: CallOverrides): Promise<[string]>;
 
@@ -177,11 +155,7 @@ export class ITManTokenCrowdsale extends BaseContract {
 
   rate(overrides?: CallOverrides): Promise<BigNumber>;
 
-  remainingTokens(overrides?: CallOverrides): Promise<BigNumber>;
-
   token(overrides?: CallOverrides): Promise<string>;
-
-  tokenWallet(overrides?: CallOverrides): Promise<string>;
 
   wallet(overrides?: CallOverrides): Promise<string>;
 
@@ -200,11 +174,7 @@ export class ITManTokenCrowdsale extends BaseContract {
 
     rate(overrides?: CallOverrides): Promise<BigNumber>;
 
-    remainingTokens(overrides?: CallOverrides): Promise<BigNumber>;
-
     token(overrides?: CallOverrides): Promise<string>;
-
-    tokenWallet(overrides?: CallOverrides): Promise<string>;
 
     wallet(overrides?: CallOverrides): Promise<string>;
 
@@ -252,11 +222,7 @@ export class ITManTokenCrowdsale extends BaseContract {
 
     rate(overrides?: CallOverrides): Promise<BigNumber>;
 
-    remainingTokens(overrides?: CallOverrides): Promise<BigNumber>;
-
     token(overrides?: CallOverrides): Promise<BigNumber>;
-
-    tokenWallet(overrides?: CallOverrides): Promise<BigNumber>;
 
     wallet(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -279,11 +245,7 @@ export class ITManTokenCrowdsale extends BaseContract {
 
     rate(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    remainingTokens(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
     token(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    tokenWallet(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     wallet(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
