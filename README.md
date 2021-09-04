@@ -12,13 +12,15 @@
 
 ## Screenshot
 
+![./screenshot.png](./screenshot.png)
+
 ### Connect to MetaMask
 
-![https://gyazo.com/1fe5ed77da50835e77e1eae5d5c4ad04.gif](https://gyazo.com/1fe5ed77da50835e77e1eae5d5c4ad04.gif)
+![https://gyazo.com/73e88806e52c1b70211dd4911bf5a4af.gif](https://gyazo.com/73e88806e52c1b70211dd4911bf5a4af.gif)
 
-### Show balance and sign message
+### Buy tokens
 
-![https://gyazo.com/ee30b9c5b33d7f13e63ea6a8b01f70b5.gif](https://gyazo.com/ee30b9c5b33d7f13e63ea6a8b01f70b5.gif)
+![https://gyazo.com/c4d4f3972f1e2e264e08e3be54514fca.gif](https://gyazo.com/c4d4f3972f1e2e264e08e3be54514fca.gif)
 
 ## Features
 
