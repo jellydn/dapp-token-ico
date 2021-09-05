@@ -73,7 +73,7 @@ async function requestAccount() {
 }
 
 const ICOToken = ({ crowdsaleAddress }: Props) => {
-  const { library, account } = useWeb3React();
+  const { library, chainId, account } = useWeb3React();
   const [tokenAddress, setTokenAddress] = useState("");
   const [availableForSale, setAvailableForSale] = useState("0");
   const [price, setPrice] = useState("0");
@@ -132,6 +132,31 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
 
   return (
     <div className="relative py-3 sm:max-w-5xl sm:mx-auto">
+      {chainId !== 3 && (
+        <>
+          <div className="alert">
+            <div className="flex-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#ff5722"
+                className="w-6 h-6 mx-2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
+                />
+              </svg>
+              <label>Please connect to the Ropsten testnet for testing.</label>
+            </div>
+          </div>
+          <div className="divider"></div>
+        </>
+      )}
+
       <div className="flex items-center w-full px-4 py-10 bg-cover card bg-base-200">
         <TokenInfo tokenAddress={tokenAddress} />
 
