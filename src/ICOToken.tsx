@@ -1,4 +1,4 @@
-import { formatUnits, formatEther } from "@ethersproject/units";
+import { formatUnits, formatEther, parseEther } from "@ethersproject/units";
 import { useWeb3React } from "@web3-react/core";
 import { BigNumber, ethers } from "ethers";
 import React, { useEffect, useState } from "react";
@@ -107,7 +107,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
     fetchTokenAddress();
   }, []);
 
-  const totalCost = formatEther(amount * Number(formatUnits(price, "wei")));
+  const totalCost = (1 / Number(price)) * amount;
   // buy token base on quantity
   const buyTokens = async () => {
     const provider = library || new ethers.providers.Web3Provider(window.ethereum || providerUrl);
@@ -119,7 +119,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
       }
       const txPrams = {
         to: crowdsaleAddress,
-        value: ethers.BigNumber.from(amount).mul(price),
+        value: ethers.BigNumber.from(parseEther(String(1 / Number(price)))).mul(amount),
       };
       logger.warn({ txPrams });
       const transaction = await signer.sendTransaction(txPrams);
@@ -150,9 +150,9 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
                     className="w-6 h-6 mx-2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
                       d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
