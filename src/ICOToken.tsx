@@ -2,6 +2,7 @@ import { formatUnits, formatEther, parseEther } from "@ethersproject/units";
 import { useWeb3React } from "@web3-react/core";
 import { BigNumber, ethers } from "ethers";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { useQuery } from "react-query";
 
 import ITManTokenArtifacts from "./artifacts/contracts/ITManToken.sol/ITManToken.json";
@@ -80,10 +81,10 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
   const [closingTime, setClosingTime] = useState("0");
   const [amount, setAmount] = useState(1);
 
-  // set erc20 token address to state
+  // fetch crowdsale token info
   useEffect(() => {
-    const fetchTokenAddress = () => {
-      logger.warn("fetchTokenWallet");
+    const fetchCrowdsaleTokenInfo = () => {
+      logger.warn("fetchCrowdsaleTokenInfo");
       const provider = library || new ethers.providers.Web3Provider(window.ethereum || providerUrl);
       const contract = new ethers.Contract(
         crowdsaleAddress,
@@ -105,13 +106,12 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
         .catch(logger.error);
     };
     try {
-      fetchTokenAddress();
+      fetchCrowdsaleTokenInfo();
     } catch (error) {
       logger.error(error);
     }
-  }, []);
+  }, [library]);
 
-  const totalCost = (1 / Number(price)) * amount;
   // buy token base on quantity
   const buyTokens = async () => {
     const provider = library || new ethers.providers.Web3Provider(window.ethereum || providerUrl);
@@ -127,13 +127,17 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
       };
       logger.warn({ txPrams });
       const transaction = await signer.sendTransaction(txPrams);
-
-      await transaction.wait();
+      toast.promise(transaction.wait(), {
+        loading: `Transaction submitted. Wait for confirmation...`,
+        success: <b>Transaction confirmed!</b>,
+        error: <b>Transaction failed!.</b>,
+      });
     } catch (error) {
       logger.error(error);
     }
   };
 
+  const totalCost = (1 / Number(price)) * amount;
   return (
     <div className="relative py-3 sm:max-w-5xl sm:mx-auto">
       {chainId !== 3 && (

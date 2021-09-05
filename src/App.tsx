@@ -1,5 +1,6 @@
 import { Web3ReactProvider } from "@web3-react/core";
 import React from "react";
+import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
@@ -67,6 +68,7 @@ function App() {
           </footer>
         </div>
         <ReactQueryDevtools initialIsOpen={false} />
+        <Toaster position="top-right" />
       </QueryClientProvider>
     </Web3ReactProvider>
   );
