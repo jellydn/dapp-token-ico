@@ -104,7 +104,11 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
         .then((time) => setClosingTime(BigNumber.from(time).toString()))
         .catch(logger.error);
     };
-    fetchTokenAddress();
+    try {
+      fetchTokenAddress();
+    } catch (error) {
+      logger.error(error);
+    }
   }, []);
 
   const totalCost = (1 / Number(price)) * amount;
