@@ -20,7 +20,10 @@
 
 ### Buy tokens
 
-![https://gyazo.com/c4d4f3972f1e2e264e08e3be54514fca.gif](https://gyazo.com/c4d4f3972f1e2e264e08e3be54514fca.gif)
+Place an order
+![https://gyazo.com/d6361cc2a18ca3140f2aa9b09fc385ca.gif](https://gyazo.com/d6361cc2a18ca3140f2aa9b09fc385ca.gif)
+Buy with MetaMask and wait for confirmation.
+![https://gyazo.com/924565f84487b15f6c391f7a6378de57.gif](https://gyazo.com/924565f84487b15f6c391f7a6378de57.gif)
 
 ## Features
 
