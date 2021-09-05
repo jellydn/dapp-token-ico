@@ -77,6 +77,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
   const [tokenAddress, setTokenAddress] = useState("");
   const [availableForSale, setAvailableForSale] = useState("0");
   const [price, setPrice] = useState("0");
+  const [closingTime, setClosingTime] = useState("0");
   const [amount, setAmount] = useState(1);
 
   // set erc20 token address to state
@@ -97,6 +98,10 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
       contract
         .rate()
         .then((rate) => setPrice(BigNumber.from(rate).toString()))
+        .catch(logger.error);
+      contract
+        .closingTime()
+        .then((time) => setClosingTime(BigNumber.from(time).toString()))
         .catch(logger.error);
     };
     fetchTokenAddress();
@@ -129,9 +134,32 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
     <div className="relative py-3 sm:max-w-5xl sm:mx-auto">
       <div className="flex items-center w-full px-4 py-10 bg-cover card bg-base-200">
         <TokenInfo tokenAddress={tokenAddress} />
+
         <div className="text-center shadow-2xl card">
           <div className="card-body">
             <h2 className="card-title">ITMan Token</h2>
+            {Number(closingTime) > 0 && (
+              <div className="alert">
+                <div className="flex-1">
+                  Closing time
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#2196f3"
+                    className="w-6 h-6 mx-2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width={2}
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <label>{new Date(Number(closingTime) * 1000).toLocaleString()}</label>
+                </div>
+              </div>
+            )}
             <div className="shadow stats">
               <div className="stat">
                 <div className="stat-title">Available for sale</div>
