@@ -82,29 +82,29 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
   const [amount, setAmount] = useState(1);
 
   // fetch crowdsale token info
+  const fetchCrowdsaleTokenInfo = () => {
+    logger.warn("fetchCrowdsaleTokenInfo");
+    const provider = library || new ethers.providers.Web3Provider(window.ethereum || providerUrl);
+    const contract = new ethers.Contract(
+      crowdsaleAddress,
+      ITManTokenCrowdsaleArtifacts.abi,
+      provider
+    ) as ITManTokenCrowdsale;
+    contract.token().then(setTokenAddress).catch(logger.error);
+    contract
+      .remainingTokens()
+      .then((total) => setAvailableForSale(BigNumber.from(total).toString()))
+      .catch(logger.error);
+    contract
+      .rate()
+      .then((rate) => setPrice(BigNumber.from(rate).toString()))
+      .catch(logger.error);
+    contract
+      .closingTime()
+      .then((time) => setClosingTime(BigNumber.from(time).toString()))
+      .catch(logger.error);
+  };
   useEffect(() => {
-    const fetchCrowdsaleTokenInfo = () => {
-      logger.warn("fetchCrowdsaleTokenInfo");
-      const provider = library || new ethers.providers.Web3Provider(window.ethereum || providerUrl);
-      const contract = new ethers.Contract(
-        crowdsaleAddress,
-        ITManTokenCrowdsaleArtifacts.abi,
-        provider
-      ) as ITManTokenCrowdsale;
-      contract.token().then(setTokenAddress).catch(logger.error);
-      contract
-        .remainingTokens()
-        .then((total) => setAvailableForSale(BigNumber.from(total).toString()))
-        .catch(logger.error);
-      contract
-        .rate()
-        .then((rate) => setPrice(BigNumber.from(rate).toString()))
-        .catch(logger.error);
-      contract
-        .closingTime()
-        .then((time) => setClosingTime(BigNumber.from(time).toString()))
-        .catch(logger.error);
-    };
     try {
       fetchCrowdsaleTokenInfo();
     } catch (error) {
@@ -132,6 +132,12 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
         success: <b>Transaction confirmed!</b>,
         error: <b>Transaction failed!.</b>,
       });
+
+      // refetch total token after processing
+      transaction
+        .wait()
+        .then(() => fetchCrowdsaleTokenInfo())
+        .catch(logger.error);
     } catch (error) {
       logger.error(error);
     }
