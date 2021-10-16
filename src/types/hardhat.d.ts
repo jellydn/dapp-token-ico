@@ -61,6 +61,67 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.TimedCrowdsale__factory>;
 
+    getContractAt(
+      name: "Ownable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Ownable>;
+    getContractAt(
+      name: "ERC20",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC20>;
+    getContractAt(
+      name: "IERC20Metadata",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC20Metadata>;
+    getContractAt(
+      name: "IERC20",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC20>;
+    getContractAt(
+      name: "AllowanceCrowdsale",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.AllowanceCrowdsale>;
+    getContractAt(
+      name: "Box",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Box>;
+    getContractAt(
+      name: "BoxV2",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.BoxV2>;
+    getContractAt(
+      name: "Crowdsale",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Crowdsale>;
+    getContractAt(
+      name: "Greeter",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Greeter>;
+    getContractAt(
+      name: "ITManToken",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ITManToken>;
+    getContractAt(
+      name: "ITManTokenCrowdsale",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ITManTokenCrowdsale>;
+    getContractAt(
+      name: "TimedCrowdsale",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.TimedCrowdsale>;
+
     // default types
     getContractFactory(
       name: string,
@@ -71,5 +132,10 @@ declare module "hardhat/types/runtime" {
       bytecode: ethers.utils.BytesLike,
       signer?: ethers.Signer
     ): Promise<ethers.ContractFactory>;
+    getContractAt(
+      nameOrAbi: string | any[],
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<ethers.Contract>;
   }
 }
