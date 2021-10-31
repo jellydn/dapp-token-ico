@@ -3,7 +3,12 @@
 /* tslint:disable */
 
 /* eslint-disable */
-import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
+import type {
+  TypedEventFilter,
+  TypedEvent,
+  TypedListener,
+  OnEvent,
+} from "./common";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import { BytesLike } from "@ethersproject/bytes";
 import { Listener, Provider } from "@ethersproject/providers";
@@ -20,13 +25,9 @@ import {
   CallOverrides,
 } from "ethers";
 
-interface ITManTokenCrowdsaleInterface extends ethers.utils.Interface {
+export interface AllowanceCrowdsaleInterface extends ethers.utils.Interface {
   functions: {
     "buyTokens(address)": FunctionFragment;
-    "closingTime()": FunctionFragment;
-    "hasClosed()": FunctionFragment;
-    "isOpen()": FunctionFragment;
-    "openingTime()": FunctionFragment;
     "rate()": FunctionFragment;
     "remainingTokens()": FunctionFragment;
     "token()": FunctionFragment;
@@ -36,16 +37,6 @@ interface ITManTokenCrowdsaleInterface extends ethers.utils.Interface {
   };
 
   encodeFunctionData(functionFragment: "buyTokens", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "closingTime",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "hasClosed", values?: undefined): string;
-  encodeFunctionData(functionFragment: "isOpen", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "openingTime",
-    values?: undefined
-  ): string;
   encodeFunctionData(functionFragment: "rate", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "remainingTokens",
@@ -60,16 +51,6 @@ interface ITManTokenCrowdsaleInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "weiRaised", values?: undefined): string;
 
   decodeFunctionResult(functionFragment: "buyTokens", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "closingTime",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "hasClosed", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "isOpen", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "openingTime",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "rate", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "remainingTokens",
@@ -84,70 +65,55 @@ interface ITManTokenCrowdsaleInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "weiRaised", data: BytesLike): Result;
 
   events: {
-    "TimedCrowdsaleExtended(uint256,uint256)": EventFragment;
     "TokensPurchased(address,address,uint256,uint256)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "TimedCrowdsaleExtended"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "TokensPurchased"): EventFragment;
 }
 
-export class ITManTokenCrowdsale extends BaseContract {
+export type TokensPurchasedEvent = TypedEvent<
+  [string, string, BigNumber, BigNumber],
+  {
+    purchaser: string;
+    beneficiary: string;
+    value: BigNumber;
+    amount: BigNumber;
+  }
+>;
+
+export type TokensPurchasedEventFilter = TypedEventFilter<TokensPurchasedEvent>;
+
+export interface AllowanceCrowdsale extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  listeners<EventArgsArray extends Array<any>, EventArgsObject>(
-    eventFilter?: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): Array<TypedListener<EventArgsArray, EventArgsObject>>;
-  off<EventArgsArray extends Array<any>, EventArgsObject>(
-    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
-    listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
-  on<EventArgsArray extends Array<any>, EventArgsObject>(
-    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
-    listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
-  once<EventArgsArray extends Array<any>, EventArgsObject>(
-    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
-    listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
-  removeListener<EventArgsArray extends Array<any>, EventArgsObject>(
-    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>,
-    listener: TypedListener<EventArgsArray, EventArgsObject>
-  ): this;
-  removeAllListeners<EventArgsArray extends Array<any>, EventArgsObject>(
-    eventFilter: TypedEventFilter<EventArgsArray, EventArgsObject>
-  ): this;
+  interface: AllowanceCrowdsaleInterface;
 
-  listeners(eventName?: string): Array<Listener>;
-  off(eventName: string, listener: Listener): this;
-  on(eventName: string, listener: Listener): this;
-  once(eventName: string, listener: Listener): this;
-  removeListener(eventName: string, listener: Listener): this;
-  removeAllListeners(eventName?: string): this;
-
-  queryFilter<EventArgsArray extends Array<any>, EventArgsObject>(
-    event: TypedEventFilter<EventArgsArray, EventArgsObject>,
+  queryFilter<TEvent extends TypedEvent>(
+    event: TypedEventFilter<TEvent>,
     fromBlockOrBlockhash?: string | number | undefined,
     toBlock?: string | number | undefined
-  ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
+  ): Promise<Array<TEvent>>;
 
-  interface: ITManTokenCrowdsaleInterface;
+  listeners<TEvent extends TypedEvent>(
+    eventFilter?: TypedEventFilter<TEvent>
+  ): Array<TypedListener<TEvent>>;
+  listeners(eventName?: string): Array<Listener>;
+  removeAllListeners<TEvent extends TypedEvent>(
+    eventFilter: TypedEventFilter<TEvent>
+  ): this;
+  removeAllListeners(eventName?: string): this;
+  off: OnEvent<this>;
+  on: OnEvent<this>;
+  once: OnEvent<this>;
+  removeListener: OnEvent<this>;
 
   functions: {
     buyTokens(
       beneficiary: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
-
-    closingTime(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    hasClosed(overrides?: CallOverrides): Promise<[boolean]>;
-
-    isOpen(overrides?: CallOverrides): Promise<[boolean]>;
-
-    openingTime(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     rate(overrides?: CallOverrides): Promise<[BigNumber]>;
 
@@ -167,14 +133,6 @@ export class ITManTokenCrowdsale extends BaseContract {
     overrides?: PayableOverrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  closingTime(overrides?: CallOverrides): Promise<BigNumber>;
-
-  hasClosed(overrides?: CallOverrides): Promise<boolean>;
-
-  isOpen(overrides?: CallOverrides): Promise<boolean>;
-
-  openingTime(overrides?: CallOverrides): Promise<BigNumber>;
-
   rate(overrides?: CallOverrides): Promise<BigNumber>;
 
   remainingTokens(overrides?: CallOverrides): Promise<BigNumber>;
@@ -190,14 +148,6 @@ export class ITManTokenCrowdsale extends BaseContract {
   callStatic: {
     buyTokens(beneficiary: string, overrides?: CallOverrides): Promise<void>;
 
-    closingTime(overrides?: CallOverrides): Promise<BigNumber>;
-
-    hasClosed(overrides?: CallOverrides): Promise<boolean>;
-
-    isOpen(overrides?: CallOverrides): Promise<boolean>;
-
-    openingTime(overrides?: CallOverrides): Promise<BigNumber>;
-
     rate(overrides?: CallOverrides): Promise<BigNumber>;
 
     remainingTokens(overrides?: CallOverrides): Promise<BigNumber>;
@@ -212,28 +162,18 @@ export class ITManTokenCrowdsale extends BaseContract {
   };
 
   filters: {
-    TimedCrowdsaleExtended(
-      prevClosingTime?: null,
-      newClosingTime?: null
-    ): TypedEventFilter<
-      [BigNumber, BigNumber],
-      { prevClosingTime: BigNumber; newClosingTime: BigNumber }
-    >;
-
+    "TokensPurchased(address,address,uint256,uint256)"(
+      purchaser?: string | null,
+      beneficiary?: string | null,
+      value?: null,
+      amount?: null
+    ): TokensPurchasedEventFilter;
     TokensPurchased(
       purchaser?: string | null,
       beneficiary?: string | null,
       value?: null,
       amount?: null
-    ): TypedEventFilter<
-      [string, string, BigNumber, BigNumber],
-      {
-        purchaser: string;
-        beneficiary: string;
-        value: BigNumber;
-        amount: BigNumber;
-      }
-    >;
+    ): TokensPurchasedEventFilter;
   };
 
   estimateGas: {
@@ -241,14 +181,6 @@ export class ITManTokenCrowdsale extends BaseContract {
       beneficiary: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
-
-    closingTime(overrides?: CallOverrides): Promise<BigNumber>;
-
-    hasClosed(overrides?: CallOverrides): Promise<BigNumber>;
-
-    isOpen(overrides?: CallOverrides): Promise<BigNumber>;
-
-    openingTime(overrides?: CallOverrides): Promise<BigNumber>;
 
     rate(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -268,14 +200,6 @@ export class ITManTokenCrowdsale extends BaseContract {
       beneficiary: string,
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
-
-    closingTime(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    hasClosed(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    isOpen(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    openingTime(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     rate(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
