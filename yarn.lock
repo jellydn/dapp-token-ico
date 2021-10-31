@@ -2018,10 +2018,10 @@
     "@truffle/interface-adapter" "^0.5.5"
     web3 "1.5.2"
 
-"@typechain/ethers-v5@8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@typechain/ethers-v5/-/ethers-v5-8.0.0.tgz#1321a441d473b588826561daa9e57be889e67c93"
-  integrity sha512-i2H/G6YZs8fAxXwQ2jtkrsuH9mbZ6TqIzt0j208dX0rnDD66Dllk9lJcJpSuLYzTvf+o5tNe75si1dFLbjMmZQ==
+"@typechain/ethers-v5@8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@typechain/ethers-v5/-/ethers-v5-8.0.1.tgz#26d8a8aa53524865aff62cd68a77329664a390a4"
+  integrity sha512-HFYlrdZWkKtuRjkKAZFY8WU7hcW0HPlDaQEX1W0Qo2VvpE7eCzhM4BcEGycjisKcBeb03fXMoBtHVcO1rZ9e9A==
   dependencies:
     lodash "^4.17.15"
     ts-essentials "^7.0.1"
