@@ -3,29 +3,23 @@
 /* tslint:disable */
 
 /* eslint-disable */
-import type {
-  TypedEventFilter,
-  TypedEvent,
-  TypedListener,
-  OnEvent,
-} from "./common";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { BytesLike } from "@ethersproject/bytes";
+import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
+import { FunctionFragment, Result, EventFragment } from "@ethersproject/abi";
 import { Listener, Provider } from "@ethersproject/providers";
 import {
-  ethers,
-  EventFilter,
-  Signer,
+  BaseContract,
   BigNumber,
   BigNumberish,
-  PopulatedTransaction,
-  BaseContract,
+  BytesLike,
+  CallOverrides,
   ContractTransaction,
   Overrides,
-  CallOverrides,
+  PopulatedTransaction,
+  Signer,
+  utils,
 } from "ethers";
 
-export interface ITManTokenInterface extends ethers.utils.Interface {
+export interface ITManTokenInterface extends utils.Interface {
   functions: {
     "allowance(address,address)": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;

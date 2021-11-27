@@ -3,29 +3,22 @@
 /* tslint:disable */
 
 /* eslint-disable */
-import type {
-  TypedEventFilter,
-  TypedEvent,
-  TypedListener,
-  OnEvent,
-} from "./common";
-import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
-import { BytesLike } from "@ethersproject/bytes";
+import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
+import { FunctionFragment, Result, EventFragment } from "@ethersproject/abi";
 import { Listener, Provider } from "@ethersproject/providers";
 import {
-  ethers,
-  EventFilter,
-  Signer,
-  BigNumber,
-  BigNumberish,
-  PopulatedTransaction,
   BaseContract,
+  BigNumber,
+  BytesLike,
+  CallOverrides,
   ContractTransaction,
   Overrides,
-  CallOverrides,
+  PopulatedTransaction,
+  Signer,
+  utils,
 } from "ethers";
 
-export interface OwnableInterface extends ethers.utils.Interface {
+export interface OwnableInterface extends utils.Interface {
   functions: {
     "owner()": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
