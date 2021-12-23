@@ -33,7 +33,7 @@
     "@trivago/prettier-plugin-sort-imports": "3.1.1",
     "@typechain/ethers-v5": "8.0.5",
     "@typechain/hardhat": "3.1.0",
-    "@types/react": "17.0.37",
+    "@types/react": "17.0.38",
     "@types/react-dom": "17.0.11",
     "@typescript-eslint/eslint-plugin": "5.8.0",
     "@typescript-eslint/parser": "5.8.0",
