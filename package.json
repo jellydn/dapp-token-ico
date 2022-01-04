@@ -10,7 +10,7 @@
     "test": "mocha --exit --recursive"
   },
   "dependencies": {
-    "@tailwindcss/typography": "0.4.1",
+    "@tailwindcss/typography": "0.5.0",
     "@web3-react/core": "6.1.9",
     "@web3-react/injected-connector": "6.0.7",
     "@web3-react/network-connector": "6.1.9",
@@ -33,7 +33,7 @@
     "@trivago/prettier-plugin-sort-imports": "3.1.1",
     "@typechain/ethers-v5": "8.0.5",
     "@typechain/hardhat": "3.1.0",
-    "@types/react": "17.0.37",
+    "@types/react": "17.0.38",
     "@types/react-dom": "17.0.11",
     "@typescript-eslint/eslint-plugin": "5.9.0",
     "@typescript-eslint/parser": "5.9.0",
@@ -62,7 +62,7 @@
     "solgraph": "0.3.3",
     "solhint": "3.3.6",
     "solidity-coverage": "0.7.17",
-    "tailwindcss": "2.2.19",
+    "tailwindcss": "3.0.9",
     "typechain": "6.1.0",
     "typescript": "4.5.4",
     "vite": "2.7.10",
