@@ -1806,18 +1806,18 @@
   resolved "https://registry.yarnpkg.com/@nomiclabs/hardhat-ethers/-/hardhat-ethers-2.0.3.tgz#06e20a57274f6ce3148132910e723948a711edf1"
   integrity sha512-IJ0gBotVtO7YyLZyHNgbxzskUtFok+JkRlKPo8YELqj1ms9XL6Qm3vsfsGdZr22wnJeVEF5TQPotKuwQk21Dag==
 
-"@nomiclabs/hardhat-etherscan@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@nomiclabs/hardhat-etherscan/-/hardhat-etherscan-3.0.1.tgz#25013e464451e75273736eada6473d98be56c283"
-  integrity sha512-ZeDMqUvbmWGSpsCkyD7QOsJ3lytNgmoOPpglOtgCfoIewb1o2Nz1PgofWYsSdIiWBtIN9rBF8ldU2jVpgsNhHg==
+"@nomiclabs/hardhat-etherscan@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@nomiclabs/hardhat-etherscan/-/hardhat-etherscan-3.0.2.tgz#e8f8e2c7d773b42f18a27afe4bb71267d3546646"
+  integrity sha512-9Dz9oVRuTHZMJZjkNf5DBrfm3bm1hCxo5RZ3EX4f2Y2imNbpmB7tldvmj2N81p0T5bvsACSR0wyudChDOE7gJA==
   dependencies:
     "@ethersproject/abi" "^5.1.2"
     "@ethersproject/address" "^5.0.2"
     cbor "^5.0.2"
     debug "^4.1.1"
     fs-extra "^7.0.1"
-    node-fetch "^2.6.0"
     semver "^6.3.0"
+    undici "^4.14.1"
 
 "@nomiclabs/hardhat-waffle@2.0.3":
   version "2.0.3"
