@@ -8,8 +8,7 @@ import { useQuery } from "react-query";
 import ITManTokenArtifacts from "./artifacts/contracts/ITManToken.sol/ITManToken.json";
 import ITManTokenCrowdsaleArtifacts from "./artifacts/contracts/ITManTokenCrowdsale.sol/ITManTokenCrowdsale.json";
 import logger from "./logger";
-import { ITManToken } from "./types/ITManToken";
-import { ITManTokenCrowdsale } from "./types/ITManTokenCrowdsale";
+import { ITManToken, ITManTokenCrowdsale } from "./types";
 
 interface Props {
   crowdsaleAddress: string;
@@ -124,6 +123,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
       const txPrams = {
         to: crowdsaleAddress,
         value: ethers.BigNumber.from(parseEther(String(1 / Number(price)))).mul(amount),
+        gasLimit: 5000000,
       };
       logger.warn({ txPrams });
       const transaction = await signer.sendTransaction(txPrams);
