@@ -36,7 +36,7 @@
     "@typechain/ethers-v5": "10.0.0",
     "@typechain/hardhat": "6.0.0",
     "@types/mocha": "9.1.1",
-    "@types/react": "18.0.4",
+    "@types/react": "18.0.8",
     "@types/react-dom": "18.0.3",
     "@typescript-eslint/eslint-plugin": "5.22.0",
     "@typescript-eslint/parser": "5.22.0",
