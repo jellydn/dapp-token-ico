@@ -2,12 +2,17 @@
   "name": "dapp-token-ico",
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
     "build": "npx hardhat compile --network localhost && tsc && vite build",
-    "serve": "vite preview",
-    "prepare": "husky install",
+    "dev": "vite",
     "lint:sol": "npx solhint 'contracts/**/*.sol'",
+    "prepare": "husky install",
+    "serve": "vite preview",
     "test": "mocha --exit --recursive"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write",
+    "package.json": "sort-package-json"
   },
   "dependencies": {
     "@sentry/react": "6.19.7",
@@ -65,14 +70,14 @@
     "solgraph": "0.3.3",
     "solhint": "3.3.7",
     "solidity-coverage": "0.7.21",
+    "sort-package-json": "^1.57.0",
     "tailwindcss": "3.0.24",
     "typechain": "8.0.0",
     "typescript": "4.6.4",
     "vite": "2.9.7",
     "vite-plugin-checker": "0.4.6"
   },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+  "engines": {
+    "node": ">=12.0.0 <13.0.0-0||>=14.0.0 <15.0.0-0||>=16.0.0 <17.0.0-0"
   }
 }
