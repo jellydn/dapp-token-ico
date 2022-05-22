@@ -11173,10 +11173,10 @@ react-is@^16.13.1, react-is@^16.7.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-query@4.0.0-beta.12:
-  version "4.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-4.0.0-beta.12.tgz#479299c6691e55294e6481ee49131ac6aadf0a0e"
-  integrity sha512-PAeGKj/SlIvxShJVBbyKojUYUK78yK/W9nS9Uw78e40wjhuHiFMqbQWjtAQTBCbliZ5p1VkSHCAtpEVrr5GOvQ==
+react-query@4.0.0-beta.13:
+  version "4.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-4.0.0-beta.13.tgz#07fc1610d87db1a174ad5723b4ca4b3e238dc3db"
+  integrity sha512-CnDuiD4IWGh2nesnAqMlUbXhcw7ZSZZ5JwfQyv3a8OIAs7NoHvtNWlIH88kcOWDZjC7eGALrjnwsWpCK45jjtw==
   dependencies:
     "@babel/runtime" "^7.17.9"
     "@types/use-sync-external-store" "^0.0.3"
