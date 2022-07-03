@@ -15,8 +15,8 @@
     "package.json": "sort-package-json"
   },
   "dependencies": {
-    "@sentry/react": "7.3.1",
-    "@sentry/tracing": "7.3.1",
+    "@sentry/react": "7.4.1",
+    "@sentry/tracing": "7.4.1",
     "@tailwindcss/typography": "0.5.2",
     "@web3-react/core": "6.1.9",
     "@web3-react/injected-connector": "6.0.7",
@@ -34,8 +34,8 @@
     "@nomiclabs/hardhat-ethers": "2.0.6",
     "@nomiclabs/hardhat-etherscan": "3.1.0",
     "@nomiclabs/hardhat-waffle": "2.0.3",
-    "@openzeppelin/contracts": "4.6.0",
-    "@openzeppelin/contracts-upgradeable": "4.6.0",
+    "@openzeppelin/contracts": "4.7.0",
+    "@openzeppelin/contracts-upgradeable": "4.7.0",
     "@openzeppelin/hardhat-upgrades": "1.19.0",
     "@trivago/prettier-plugin-sort-imports": "3.2.0",
     "@typechain/ethers-v5": "10.1.0",
@@ -43,13 +43,13 @@
     "@types/mocha": "9.1.1",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
-    "@typescript-eslint/eslint-plugin": "5.30.0",
-    "@typescript-eslint/parser": "5.30.0",
+    "@typescript-eslint/eslint-plugin": "5.30.4",
+    "@typescript-eslint/parser": "5.30.4",
     "@vitejs/plugin-react-refresh": "1.3.6",
     "autoprefixer": "10.4.7",
     "chai": "4.3.6",
     "dotenv": "16.0.1",
-    "eslint": "8.18.0",
+    "eslint": "8.19.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
@@ -75,7 +75,7 @@
     "typechain": "8.1.0",
     "typescript": "4.7.4",
     "vite": "2.9.13",
-    "vite-plugin-checker": "0.4.6"
+    "vite-plugin-checker": "0.4.7"
   },
   "engines": {
     "node": ">=12.0.0 <13.0.0-0||>=14.0.0 <15.0.0-0||>=16.0.0 <17.0.0-0"

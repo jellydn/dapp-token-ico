@@ -8,6 +8,7 @@ import type {
   TypedEvent,
   TypedListener,
   OnEvent,
+  PromiseOrValue,
 } from "../common";
 import type { FunctionFragment, Result } from "@ethersproject/abi";
 import type { Listener, Provider } from "@ethersproject/providers";
@@ -34,7 +35,10 @@ export interface GreeterInterface extends utils.Interface {
   ): FunctionFragment;
 
   encodeFunctionData(functionFragment: "greet", values?: undefined): string;
-  encodeFunctionData(functionFragment: "setGreeting", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "setGreeting",
+    values: [PromiseOrValue<string>]
+  ): string;
 
   decodeFunctionResult(functionFragment: "greet", data: BytesLike): Result;
   decodeFunctionResult(
@@ -75,22 +79,25 @@ export interface Greeter extends BaseContract {
     greet(overrides?: CallOverrides): Promise<[string]>;
 
     setGreeting(
-      _greeting: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      _greeting: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
   };
 
   greet(overrides?: CallOverrides): Promise<string>;
 
   setGreeting(
-    _greeting: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
+    _greeting: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   callStatic: {
     greet(overrides?: CallOverrides): Promise<string>;
 
-    setGreeting(_greeting: string, overrides?: CallOverrides): Promise<void>;
+    setGreeting(
+      _greeting: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
   };
 
   filters: {};
@@ -99,8 +106,8 @@ export interface Greeter extends BaseContract {
     greet(overrides?: CallOverrides): Promise<BigNumber>;
 
     setGreeting(
-      _greeting: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      _greeting: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
   };
 
@@ -108,8 +115,8 @@ export interface Greeter extends BaseContract {
     greet(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     setGreeting(
-      _greeting: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      _greeting: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
   };
 }

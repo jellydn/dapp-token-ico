@@ -3,6 +3,7 @@
 /* tslint:disable */
 
 /* eslint-disable */
+import type { PromiseOrValue } from "../../common";
 import type { Greeter, GreeterInterface } from "../../contracts/Greeter";
 import type { Provider, TransactionRequest } from "@ethersproject/providers";
 import { Signer, utils, Contract, ContractFactory, Overrides } from "ethers";
@@ -68,14 +69,14 @@ export class Greeter__factory extends ContractFactory {
   }
 
   override deploy(
-    _greeting: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
+    _greeting: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<Greeter> {
     return super.deploy(_greeting, overrides || {}) as Promise<Greeter>;
   }
   override getDeployTransaction(
-    _greeting: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
+    _greeting: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): TransactionRequest {
     return super.getDeployTransaction(_greeting, overrides || {});
   }
