@@ -26,7 +26,7 @@
     "loglevel": "1.8.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hot-toast": "2.2.0",
+    "react-hot-toast": "2.3.0",
     "react-query": "4.0.0-beta.23",
     "web3-react": "5.0.5"
   },
