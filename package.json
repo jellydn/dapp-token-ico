@@ -15,8 +15,8 @@
     "package.json": "sort-package-json"
   },
   "dependencies": {
-    "@sentry/react": "7.14.1",
-    "@sentry/tracing": "7.14.1",
+    "@sentry/react": "7.14.2",
+    "@sentry/tracing": "7.14.2",
     "@tailwindcss/typography": "0.5.7",
     "@web3-react/core": "6.1.9",
     "@web3-react/injected-connector": "6.0.7",
@@ -40,8 +40,8 @@
     "@trivago/prettier-plugin-sort-imports": "3.3.0",
     "@typechain/ethers-v5": "10.1.0",
     "@typechain/hardhat": "6.1.3",
-    "@types/mocha": "9.1.1",
-    "@types/react": "18.0.20",
+    "@types/mocha": "10.0.0",
+    "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "5.39.0",
     "@typescript-eslint/parser": "5.39.0",
@@ -70,11 +70,11 @@
     "solgraph": "0.3.3",
     "solhint": "3.3.7",
     "solidity-coverage": "0.8.2",
-    "sort-package-json": "1.57.0",
+    "sort-package-json": "2.0.0",
     "tailwindcss": "3.1.8",
     "typechain": "8.1.0",
     "typescript": "4.8.4",
-    "vite": "3.1.4"
+    "vite": "3.1.5"
   },
   "engines": {
     "node": ">=12.0.0 <13.0.0-0||>=14.0.0 <15.0.0-0||>=16.0.0 <17.0.0-0"
