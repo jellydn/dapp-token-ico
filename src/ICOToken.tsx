@@ -145,7 +145,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
 
   const totalCost = (1 / Number(price)) * amount;
   return (
-    <div className="relative py-3 sm:max-w-5xl sm:mx-auto">
+    <div className="relative py-3 sm:mx-auto sm:max-w-5xl">
       {chainId !== 3 && (
         <>
           <div className="alert">
@@ -155,7 +155,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="#ff5722"
-                className="w-6 h-6 mx-2"
+                className="mx-2 w-6 h-6"
               >
                 <path
                   strokeLinecap="round"
@@ -171,7 +171,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
         </>
       )}
 
-      <div className="flex items-center w-full px-4 py-10 bg-cover card bg-base-200">
+      <div className="flex items-center py-10 px-4 w-full bg-cover card bg-base-200">
         <TokenInfo tokenAddress={tokenAddress} />
 
         <div className="text-center shadow-2xl card">
@@ -186,7 +186,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="#2196f3"
-                    className="w-6 h-6 mx-2"
+                    className="mx-2 w-6 h-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -234,12 +234,12 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
 
         <div className="divider"></div>
 
-        <div className="items-center justify-center max-w-2xl px-4 py-4 mx-auto text-xl border-orange-500 lg:flex md:flex">
+        <div className="justify-center items-center py-4 px-4 mx-auto max-w-2xl text-xl border-orange-500 md:flex lg:flex">
           <div className="p-2 font-semibold">
             <a
               href={`https://ropsten.etherscan.io/address/${tokenAddress}`}
               target="_blank"
-              className="px-4 py-1 ml-2 text-white bg-orange-500 rounded-full shadow focus:outline-none"
+              className="py-1 px-4 ml-2 text-white bg-orange-500 rounded-full shadow focus:outline-none"
               rel="noreferrer"
             >
               View Token on Etherscan

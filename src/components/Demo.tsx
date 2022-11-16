@@ -57,7 +57,7 @@ export default function Demo() {
   const disabled = !triedEager || !!activatingConnector || connected || !!error;
   return (
     <Header>
-      <div className="flex flex-row w-full ml-4 mr-4">
+      <div className="flex flex-row mr-4 ml-4 w-full">
         <button
           className="btn btn-primary"
           disabled={disabled}

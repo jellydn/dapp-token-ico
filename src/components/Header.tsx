@@ -18,7 +18,7 @@ export function Header({ children }: Props) {
         <span className="text-lg font-bold">{active ? "🟢" : error ? "🔴" : "🟠"}</span>
         {children}
       </div>
-      <div className="flex-none hidden px-2 mx-2 lg:flex">
+      <div className="hidden flex-none px-2 mx-2 lg:flex">
         <div className="flex items-stretch">
           <ChainId />
           <Account />
