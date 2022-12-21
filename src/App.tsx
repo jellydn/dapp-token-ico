@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/react";
 import { Web3ReactProvider } from "@web3-react/core";
 import React from "react";
 import { Toaster } from "react-hot-toast";
@@ -74,4 +73,4 @@ function App() {
   );
 }
 
-export default Sentry.withErrorBoundary(App, { fallback: <p>an error has occurred</p> });
+export default App;
