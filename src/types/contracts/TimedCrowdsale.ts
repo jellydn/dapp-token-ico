@@ -8,7 +8,6 @@ import type {
   TypedEvent,
   TypedListener,
   OnEvent,
-  PromiseOrValue,
 } from "../common";
 import type {
   FunctionFragment,
@@ -54,10 +53,7 @@ export interface TimedCrowdsaleInterface extends utils.Interface {
       | "weiRaised"
   ): FunctionFragment;
 
-  encodeFunctionData(
-    functionFragment: "buyTokens",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "buyTokens", values: [string]): string;
   encodeFunctionData(
     functionFragment: "closingTime",
     values?: undefined
@@ -151,8 +147,8 @@ export interface TimedCrowdsale extends BaseContract {
 
   functions: {
     buyTokens(
-      beneficiary: PromiseOrValue<string>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+      beneficiary: string,
+      overrides?: PayableOverrides & { from?: string }
     ): Promise<ContractTransaction>;
 
     closingTime(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -173,8 +169,8 @@ export interface TimedCrowdsale extends BaseContract {
   };
 
   buyTokens(
-    beneficiary: PromiseOrValue<string>,
-    overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+    beneficiary: string,
+    overrides?: PayableOverrides & { from?: string }
   ): Promise<ContractTransaction>;
 
   closingTime(overrides?: CallOverrides): Promise<BigNumber>;
@@ -194,10 +190,7 @@ export interface TimedCrowdsale extends BaseContract {
   weiRaised(overrides?: CallOverrides): Promise<BigNumber>;
 
   callStatic: {
-    buyTokens(
-      beneficiary: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    buyTokens(beneficiary: string, overrides?: CallOverrides): Promise<void>;
 
     closingTime(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -227,14 +220,14 @@ export interface TimedCrowdsale extends BaseContract {
     ): TimedCrowdsaleExtendedEventFilter;
 
     "TokensPurchased(address,address,uint256,uint256)"(
-      purchaser?: PromiseOrValue<string> | null,
-      beneficiary?: PromiseOrValue<string> | null,
+      purchaser?: string | null,
+      beneficiary?: string | null,
       value?: null,
       amount?: null
     ): TokensPurchasedEventFilter;
     TokensPurchased(
-      purchaser?: PromiseOrValue<string> | null,
-      beneficiary?: PromiseOrValue<string> | null,
+      purchaser?: string | null,
+      beneficiary?: string | null,
       value?: null,
       amount?: null
     ): TokensPurchasedEventFilter;
@@ -242,8 +235,8 @@ export interface TimedCrowdsale extends BaseContract {
 
   estimateGas: {
     buyTokens(
-      beneficiary: PromiseOrValue<string>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+      beneficiary: string,
+      overrides?: PayableOverrides & { from?: string }
     ): Promise<BigNumber>;
 
     closingTime(overrides?: CallOverrides): Promise<BigNumber>;
@@ -265,8 +258,8 @@ export interface TimedCrowdsale extends BaseContract {
 
   populateTransaction: {
     buyTokens(
-      beneficiary: PromiseOrValue<string>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+      beneficiary: string,
+      overrides?: PayableOverrides & { from?: string }
     ): Promise<PopulatedTransaction>;
 
     closingTime(overrides?: CallOverrides): Promise<PopulatedTransaction>;

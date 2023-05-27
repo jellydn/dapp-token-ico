@@ -8,7 +8,6 @@ import type {
   TypedEvent,
   TypedListener,
   OnEvent,
-  PromiseOrValue,
 } from "../common";
 import type {
   FunctionFragment,
@@ -50,10 +49,7 @@ export interface AllowanceCrowdsaleInterface extends utils.Interface {
       | "weiRaised"
   ): FunctionFragment;
 
-  encodeFunctionData(
-    functionFragment: "buyTokens",
-    values: [PromiseOrValue<string>]
-  ): string;
+  encodeFunctionData(functionFragment: "buyTokens", values: [string]): string;
   encodeFunctionData(functionFragment: "rate", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "remainingTokens",
@@ -129,8 +125,8 @@ export interface AllowanceCrowdsale extends BaseContract {
 
   functions: {
     buyTokens(
-      beneficiary: PromiseOrValue<string>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+      beneficiary: string,
+      overrides?: PayableOverrides & { from?: string }
     ): Promise<ContractTransaction>;
 
     rate(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -147,8 +143,8 @@ export interface AllowanceCrowdsale extends BaseContract {
   };
 
   buyTokens(
-    beneficiary: PromiseOrValue<string>,
-    overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+    beneficiary: string,
+    overrides?: PayableOverrides & { from?: string }
   ): Promise<ContractTransaction>;
 
   rate(overrides?: CallOverrides): Promise<BigNumber>;
@@ -164,10 +160,7 @@ export interface AllowanceCrowdsale extends BaseContract {
   weiRaised(overrides?: CallOverrides): Promise<BigNumber>;
 
   callStatic: {
-    buyTokens(
-      beneficiary: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    buyTokens(beneficiary: string, overrides?: CallOverrides): Promise<void>;
 
     rate(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -184,14 +177,14 @@ export interface AllowanceCrowdsale extends BaseContract {
 
   filters: {
     "TokensPurchased(address,address,uint256,uint256)"(
-      purchaser?: PromiseOrValue<string> | null,
-      beneficiary?: PromiseOrValue<string> | null,
+      purchaser?: string | null,
+      beneficiary?: string | null,
       value?: null,
       amount?: null
     ): TokensPurchasedEventFilter;
     TokensPurchased(
-      purchaser?: PromiseOrValue<string> | null,
-      beneficiary?: PromiseOrValue<string> | null,
+      purchaser?: string | null,
+      beneficiary?: string | null,
       value?: null,
       amount?: null
     ): TokensPurchasedEventFilter;
@@ -199,8 +192,8 @@ export interface AllowanceCrowdsale extends BaseContract {
 
   estimateGas: {
     buyTokens(
-      beneficiary: PromiseOrValue<string>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+      beneficiary: string,
+      overrides?: PayableOverrides & { from?: string }
     ): Promise<BigNumber>;
 
     rate(overrides?: CallOverrides): Promise<BigNumber>;
@@ -218,8 +211,8 @@ export interface AllowanceCrowdsale extends BaseContract {
 
   populateTransaction: {
     buyTokens(
-      beneficiary: PromiseOrValue<string>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+      beneficiary: string,
+      overrides?: PayableOverrides & { from?: string }
     ): Promise<PopulatedTransaction>;
 
     rate(overrides?: CallOverrides): Promise<PopulatedTransaction>;

@@ -6,7 +6,7 @@
 import type {
   IERC20Permit,
   IERC20PermitInterface,
-} from "../../../../../../../@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol/IERC20Permit";
+} from "../../../../../../@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit";
 import type { Provider } from "@ethersproject/providers";
 import { Contract, Signer, utils } from "ethers";
 
@@ -86,7 +86,7 @@ const _abi = [
     stateMutability: "nonpayable",
     type: "function",
   },
-];
+] as const;
 
 export class IERC20Permit__factory {
   static readonly abi = _abi;

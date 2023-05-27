@@ -3,7 +3,6 @@
 /* tslint:disable */
 
 /* eslint-disable */
-import type { PromiseOrValue } from "../../common";
 import type { Box, BoxInterface } from "../../contracts/Box";
 import type { Provider, TransactionRequest } from "@ethersproject/providers";
 import { Signer, utils, Contract, ContractFactory, Overrides } from "ethers";
@@ -48,7 +47,7 @@ const _abi = [
     stateMutability: "nonpayable",
     type: "function",
   },
-];
+] as const;
 
 const _bytecode =
   "0x608060405234801561001057600080fd5b5061017e806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80632e64cec11461003b5780636057361d14610059575b600080fd5b610043610075565b604051610050919061010c565b60405180910390f35b610073600480360381019061006e91906100d4565b61007e565b005b60008054905090565b806000819055507f93fe6d397c74fdf1402a8b72e47b68512f0510d7b98a4bc4cbdf6ac7108b3c59816040516100b4919061010c565b60405180910390a150565b6000813590506100ce81610131565b92915050565b6000602082840312156100e657600080fd5b60006100f4848285016100bf565b91505092915050565b61010681610127565b82525050565b600060208201905061012160008301846100fd565b92915050565b6000819050919050565b61013a81610127565b811461014557600080fd5b5056fea26469706673582212207e68cb0b53bc20e217b3344346cc5504a2e9d8a07ebae681dc00ba4a28867fd364736f6c63430008040033";
@@ -70,13 +69,11 @@ export class Box__factory extends ContractFactory {
     }
   }
 
-  override deploy(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<Box> {
+  override deploy(overrides?: Overrides & { from?: string }): Promise<Box> {
     return super.deploy(overrides || {}) as Promise<Box>;
   }
   override getDeployTransaction(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: string }
   ): TransactionRequest {
     return super.getDeployTransaction(overrides || {});
   }

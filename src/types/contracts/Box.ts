@@ -8,7 +8,6 @@ import type {
   TypedEvent,
   TypedListener,
   OnEvent,
-  PromiseOrValue,
 } from "../common";
 import type {
   FunctionFragment,
@@ -38,10 +37,7 @@ export interface BoxInterface extends utils.Interface {
   getFunction(nameOrSignatureOrTopic: "retrieve" | "store"): FunctionFragment;
 
   encodeFunctionData(functionFragment: "retrieve", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "store",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
+  encodeFunctionData(functionFragment: "store", values: [BigNumberish]): string;
 
   decodeFunctionResult(functionFragment: "retrieve", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "store", data: BytesLike): Result;
@@ -93,25 +89,22 @@ export interface Box extends BaseContract {
     retrieve(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     store(
-      value: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      value: BigNumberish,
+      overrides?: Overrides & { from?: string }
     ): Promise<ContractTransaction>;
   };
 
   retrieve(overrides?: CallOverrides): Promise<BigNumber>;
 
   store(
-    value: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    value: BigNumberish,
+    overrides?: Overrides & { from?: string }
   ): Promise<ContractTransaction>;
 
   callStatic: {
     retrieve(overrides?: CallOverrides): Promise<BigNumber>;
 
-    store(
-      value: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    store(value: BigNumberish, overrides?: CallOverrides): Promise<void>;
   };
 
   filters: {
@@ -123,8 +116,8 @@ export interface Box extends BaseContract {
     retrieve(overrides?: CallOverrides): Promise<BigNumber>;
 
     store(
-      value: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      value: BigNumberish,
+      overrides?: Overrides & { from?: string }
     ): Promise<BigNumber>;
   };
 
@@ -132,8 +125,8 @@ export interface Box extends BaseContract {
     retrieve(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     store(
-      value: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      value: BigNumberish,
+      overrides?: Overrides & { from?: string }
     ): Promise<PopulatedTransaction>;
   };
 }
