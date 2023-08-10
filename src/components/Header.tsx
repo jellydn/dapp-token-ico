@@ -6,7 +6,7 @@ import { Balance } from "./Balance";
 import { ChainId } from "./ChainId";
 
 type Props = {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 };
 
 export function Header({ children }: Props) {

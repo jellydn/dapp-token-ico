@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { formatUnits, formatEther, parseEther } from "@ethersproject/units";
 import { useWeb3React } from "@web3-react/core";
 import { BigNumber, ethers } from "ethers";
@@ -8,13 +9,14 @@ import { useQuery } from "react-query";
 import ITManTokenArtifacts from "./artifacts/contracts/ITManToken.sol/ITManToken.json";
 import ITManTokenCrowdsaleArtifacts from "./artifacts/contracts/ITManTokenCrowdsale.sol/ITManTokenCrowdsale.json";
 import logger from "./logger";
-import { ITManToken, ITManTokenCrowdsale } from "./types";
+import { type ITManToken, type ITManTokenCrowdsale } from "./types";
 
-interface Props {
-  crowdsaleAddress: string;
-}
+type Props = {
+  readonly crowdsaleAddress: string;
+};
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Window {
     ethereum: ethers.providers.ExternalProvider;
   }
@@ -22,7 +24,7 @@ declare global {
 
 const providerUrl = import.meta.env.VITE_PROVIDER_URL;
 
-const TokenInfo = ({ tokenAddress }: { tokenAddress: string }) => {
+function TokenInfo({ tokenAddress }: { readonly tokenAddress: string }) {
   const { library } = useWeb3React();
 
   const fetchTokenInfo = async () => {
@@ -41,6 +43,7 @@ const TokenInfo = ({ tokenAddress }: { tokenAddress: string }) => {
       totalSupply,
     };
   };
+
   const { error, isLoading, data } = useQuery(["token-info", tokenAddress], fetchTokenInfo, {
     enabled: tokenAddress !== "",
   });
@@ -50,7 +53,7 @@ const TokenInfo = ({ tokenAddress }: { tokenAddress: string }) => {
 
   return (
     <div className="flex flex-col">
-      <button className="btn">
+      <button type="button" className="btn">
         {data?.name}
         <div className="ml-2 badge">{data?.symbol}</div>
         <div className="ml-2 badge badge-info">{data?.decimals}</div>
@@ -64,7 +67,7 @@ const TokenInfo = ({ tokenAddress }: { tokenAddress: string }) => {
       </div>
     </div>
   );
-};
+}
 
 async function requestAccount() {
   if (window.ethereum?.request) return window.ethereum.request({ method: "eth_requestAccounts" });
@@ -72,7 +75,7 @@ async function requestAccount() {
   throw new Error("Missing install Metamask. Please access https://metamask.io/ to install extension on your browser");
 }
 
-const ICOToken = ({ crowdsaleAddress }: Props) => {
+function ICOToken({ crowdsaleAddress }: Props) {
   const { library, chainId, account } = useWeb3React();
   const [tokenAddress, setTokenAddress] = useState("");
   const [availableForSale, setAvailableForSale] = useState("0");
@@ -80,29 +83,36 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
   const [closingTime, setClosingTime] = useState("0");
   const [amount, setAmount] = useState(1);
 
-  // fetch crowdsale token info
+  // Fetch crowdsale token info
   const fetchCrowdsaleTokenInfo = () => {
     logger.warn("fetchCrowdsaleTokenInfo");
     const provider = library || new ethers.providers.Web3Provider(window.ethereum || providerUrl);
     const contract = new ethers.Contract(
       crowdsaleAddress,
       ITManTokenCrowdsaleArtifacts.abi,
-      provider
+      provider,
     ) as ITManTokenCrowdsale;
     contract.token().then(setTokenAddress).catch(logger.error);
     contract
       .remainingTokens()
-      .then((total) => setAvailableForSale(BigNumber.from(total).toString()))
+      .then((total) => {
+        setAvailableForSale(BigNumber.from(total).toString());
+      })
       .catch(logger.error);
     contract
       .rate()
-      .then((rate) => setPrice(BigNumber.from(rate).toString()))
+      .then((rate) => {
+        setPrice(BigNumber.from(rate).toString());
+      })
       .catch(logger.error);
     contract
       .closingTime()
-      .then((time) => setClosingTime(BigNumber.from(time).toString()))
+      .then((time) => {
+        setClosingTime(BigNumber.from(time).toString());
+      })
       .catch(logger.error);
   };
+
   useEffect(() => {
     try {
       fetchCrowdsaleTokenInfo();
@@ -111,7 +121,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
     }
   }, [library]);
 
-  // buy token base on quantity
+  // Buy token base on quantity
   const buyTokens = async () => {
     const provider = library || new ethers.providers.Web3Provider(window.ethereum || providerUrl);
     const signer = provider.getSigner();
@@ -120,6 +130,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
         await requestAccount();
         return;
       }
+
       const txPrams = {
         to: crowdsaleAddress,
         value: ethers.BigNumber.from(parseEther(String(1 / Number(price)))).mul(amount),
@@ -127,16 +138,20 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
       };
       logger.warn({ txPrams });
       const transaction = await signer.sendTransaction(txPrams);
-      toast.promise(transaction.wait(), {
-        loading: `Transaction submitted. Wait for confirmation...`,
-        success: <b>Transaction confirmed!</b>,
-        error: <b>Transaction failed!.</b>,
-      });
+      toast
+        .promise(transaction.wait(), {
+          loading: `Transaction submitted. Wait for confirmation...`,
+          success: <b>Transaction confirmed!</b>,
+          error: <b>Transaction failed!.</b>,
+        })
+        .catch(logger.error);
 
-      // refetch total token after processing
+      // Refetch total token after processing
       transaction
         .wait()
-        .then(() => fetchCrowdsaleTokenInfo())
+        .then(() => {
+          fetchCrowdsaleTokenInfo();
+        })
         .catch(logger.error);
     } catch (error) {
       logger.error(error);
@@ -167,7 +182,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
               <label>Please connect to the Ropsten testnet for testing.</label>
             </div>
           </div>
-          <div className="divider"></div>
+          <div className="divider" />
         </>
       )}
 
@@ -218,12 +233,14 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
               type="range"
               max="1000"
               value={amount}
-              onChange={(evt) => setAmount(evt.target.valueAsNumber)}
               className="range range-accent"
+              onChange={(evt) => {
+                setAmount(evt.target.valueAsNumber);
+              }}
             />
             <div>
               <div className="justify-center card-actions">
-                <button onClick={buyTokens} type="button" className="btn btn-outline btn-accent">
+                <button type="button" className="btn btn-outline btn-accent" onClick={buyTokens}>
                   Buy Now
                 </button>
               </div>
@@ -232,7 +249,7 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
           </div>
         </div>
 
-        <div className="divider"></div>
+        <div className="divider" />
 
         <div className="justify-center items-center py-4 px-4 mx-auto max-w-2xl text-xl border-orange-500 md:flex lg:flex">
           <div className="p-2 font-semibold">
@@ -249,6 +266,6 @@ const ICOToken = ({ crowdsaleAddress }: Props) => {
       </div>
     </div>
   );
-};
+}
 
 export default ICOToken;
