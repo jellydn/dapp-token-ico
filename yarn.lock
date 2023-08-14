@@ -11777,10 +11777,10 @@ rustbn.js@~0.2.0:
   resolved "https://registry.yarnpkg.com/rustbn.js/-/rustbn.js-0.2.0.tgz#8082cb886e707155fd1cb6f23bd591ab8d55d0ca"
   integrity sha512-4VlvkRUuCJvr2J6Y0ImW7NvTCriMi7ErOAqWk1y69vAdoNIzCF3yPmgeNzx+RQTLEDFq5sHfscn1MwHxP9hNfA==
 
-rustywind@0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/rustywind/-/rustywind-0.18.0.tgz#2e7c472e9ba2e3273efebb7e04c6230bb14953a0"
-  integrity sha512-wQagWWqwzVFqupVbt6XfM5hEVws+v+Rqd5/I3N/ioEqICJ+07k76LU67563IMy3Ky44KkAzhG+ev7uNZRJ33nQ==
+rustywind@0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/rustywind/-/rustywind-0.19.0.tgz#9ed36cd11777ed042e72c05a46706c8c43707243"
+  integrity sha512-v+rrU4Q1LK5fshUdXwXQ8h0wOUY+hbeot2aPJiGrv0lCBk9x6kSCctE7z8N9v5UPxfm3o0sqKqDwX2Zd5YV5fw==
   dependencies:
     https-proxy-agent "^4.0.0"
     proxy-from-env "^1.1.0"
