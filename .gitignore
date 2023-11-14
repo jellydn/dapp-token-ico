@@ -16,3 +16,4 @@ artifacts
 coverage
 .eslintcache
 .openzeppelin/*.json
+.yarn
