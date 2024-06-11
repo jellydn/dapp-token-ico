@@ -31,7 +31,7 @@
     "web3-react": "5.0.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.0",
+    "@biomejs/biome": "1.8.1",
     "@nomicfoundation/hardhat-ethers": "3.0.6",
     "@nomicfoundation/hardhat-verify": "2.0.8",
     "@nomiclabs/hardhat-ethers": "2.2.3",
@@ -55,7 +55,7 @@
     "hardhat": "2.22.5",
     "hardhat-gas-reporter": "2.2.0",
     "husky": "9.0.11",
-    "lint-staged": "15.2.5",
+    "lint-staged": "15.2.6",
     "postcss": "8.4.38",
     "rustywind": "0.22.0",
     "solgraph": "1.0.2",
