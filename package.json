@@ -55,7 +55,7 @@
     "hardhat": "2.22.5",
     "hardhat-gas-reporter": "2.2.0",
     "husky": "9.0.11",
-    "lint-staged": "15.2.6",
+    "lint-staged": "15.2.7",
     "postcss": "8.4.38",
     "rustywind": "0.22.0",
     "solgraph": "1.0.2",
