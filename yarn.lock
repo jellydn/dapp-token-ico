@@ -5544,10 +5544,10 @@ d@1, d@^1.0.1, d@^1.0.2:
     es5-ext "^0.10.64"
     type "^2.7.2"
 
-daisyui@4.12.6:
-  version "4.12.6"
-  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-4.12.6.tgz#0039d18dd4a558d11b6dbaf3a3a73066b93f14d3"
-  integrity sha512-Tz/rvi2ws7+7uh51JgGpsRqnASwI13t6Sz53ePaGkhLzhr4SQI4wwNxSypE8lj/d4gl/+lbHK1phIKUo+d2YNw==
+daisyui@4.12.7:
+  version "4.12.7"
+  resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-4.12.7.tgz#476b2e9ca153e731cb74d91c52a251b231b7651d"
+  integrity sha512-KQN3BFs+c5eaDN6xNYbVX9ob7b830PiRF8o5m6os7e4WDTgMg8S3o21CZ/gDttNAfLS2zz1esass9oDP6pv2WA==
   dependencies:
     css-selector-tokenizer "^0.8"
     culori "^3"
