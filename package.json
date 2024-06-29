@@ -31,7 +31,7 @@
     "web3-react": "5.0.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.2",
+    "@biomejs/biome": "1.8.3",
     "@nomicfoundation/hardhat-ethers": "3.0.6",
     "@nomicfoundation/hardhat-verify": "2.0.8",
     "@nomiclabs/hardhat-ethers": "2.2.3",
@@ -56,7 +56,7 @@
     "hardhat-gas-reporter": "2.2.0",
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
-    "postcss": "8.4.38",
+    "postcss": "8.4.39",
     "rustywind": "0.22.0",
     "solgraph": "1.0.2",
     "solhint": "5.0.1",
@@ -65,7 +65,7 @@
     "tailwindcss": "3.4.4",
     "typechain": "8.3.2",
     "typescript": "5.5.2",
-    "vite": "5.3.1"
+    "vite": "5.3.2"
   },
   "packageManager": "yarn@1.22.22",
   "engines": {
