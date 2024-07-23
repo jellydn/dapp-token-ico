@@ -1509,7 +1509,7 @@
     "@ethersproject/properties" ">=5.0.0-beta.131"
     "@ethersproject/strings" ">=5.0.0-beta.130"
 
-"@ethersproject/abi@5.7.0", "@ethersproject/abi@^5.0.9", "@ethersproject/abi@^5.1.2", "@ethersproject/abi@^5.6.3", "@ethersproject/abi@^5.7.0":
+"@ethersproject/abi@5.7.0", "@ethersproject/abi@^5.0.9", "@ethersproject/abi@^5.1.2", "@ethersproject/abi@^5.7.0":
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/@ethersproject/abi/-/abi-5.7.0.tgz#b3f3e045bbbeed1af3947335c247ad625a44e449"
   integrity sha512-351ktp42TiRcYB3H1OP8yajPeAQstMW/yCFokj/AthP9bLHzQFPlOrxOcwYEDkUAICmOHljvN4K39OMTMUa9RA==
@@ -2331,41 +2331,48 @@
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.9.6.tgz#2a880a24eb19b4f8b25adc2a5095f2aa27f39677"
   integrity sha512-xSmezSupL+y9VkHZJGDoCBpmnB2ogM13ccaYDWqJTfS3dbuHkgjuwDFUmaFauBCboQMGB/S5UqUl2y54X99BmA==
 
-"@openzeppelin/defender-base-client@^1.46.0":
-  version "1.54.6"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/defender-base-client/-/defender-base-client-1.54.6.tgz#b65a90dba49375ac1439d638832382344067a0b9"
-  integrity sha512-PTef+rMxkM5VQ7sLwLKSjp2DBakYQd661ZJiSRywx+q/nIpm3B/HYGcz5wPZCA5O/QcEP6TatXXDoeMwimbcnw==
+"@openzeppelin/defender-sdk-base-client@^1.10.0", "@openzeppelin/defender-sdk-base-client@^1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/defender-sdk-base-client/-/defender-sdk-base-client-1.14.1.tgz#b693776ca3b22a3a803aa82f539937d1ded51ad2"
+  integrity sha512-cJpVH5KEtWOkxkqVTe52k/EPCjnNveI/H1uAj2bTA4iCChWaiehL3nP0HCxIyj2cMCdlI+qG3QtX7ptVQirVbQ==
   dependencies:
-    amazon-cognito-identity-js "^6.0.1"
+    amazon-cognito-identity-js "^6.3.6"
     async-retry "^1.3.3"
-    axios "^1.4.0"
-    lodash "^4.17.19"
-    node-fetch "^2.6.0"
 
-"@openzeppelin/hardhat-upgrades@1.28.0":
-  version "1.28.0"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/hardhat-upgrades/-/hardhat-upgrades-1.28.0.tgz#6361f313a8a879d8a08a5e395acf0933bc190950"
-  integrity sha512-7sb/Jf+X+uIufOBnmHR0FJVWuxEs2lpxjJnLNN6eCJCP8nD0v+Ot5lTOW2Qb/GFnh+fLvJtEkhkowz4ZQ57+zQ==
+"@openzeppelin/defender-sdk-deploy-client@^1.10.0":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/defender-sdk-deploy-client/-/defender-sdk-deploy-client-1.14.1.tgz#765bb085b2fa788b240d28b83b9e5718a04fab01"
+  integrity sha512-khzHU5Zv8wzwUykLWpuwXSBYdcpGqKm2pT9Ne6r29RsB+BqMZZI6OhqH7ee5TQ9ncZ9+aSY5nLKVoRGSVGN63g==
   dependencies:
-    "@openzeppelin/defender-base-client" "^1.46.0"
-    "@openzeppelin/platform-deploy-client" "^0.8.0"
-    "@openzeppelin/upgrades-core" "^1.27.0"
+    "@openzeppelin/defender-sdk-base-client" "^1.14.1"
+    axios "^1.7.2"
+    lodash "^4.17.21"
+
+"@openzeppelin/defender-sdk-network-client@^1.10.0":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/defender-sdk-network-client/-/defender-sdk-network-client-1.14.1.tgz#9ad47b362fff83949f179b65f03aeb54370e85cf"
+  integrity sha512-I8dfmuwsUZX/yI2X7lzUK4C8r1hJ7FFhQJyJ8fJGnNvig8J7PRlR8cYDQ5phsDc5Z9x4Jdw+f3ounI65psX3Ig==
+  dependencies:
+    "@openzeppelin/defender-sdk-base-client" "^1.14.1"
+    axios "^1.7.2"
+    lodash "^4.17.21"
+
+"@openzeppelin/hardhat-upgrades@3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/hardhat-upgrades/-/hardhat-upgrades-3.2.0.tgz#09ae9b48e2fca876ddff9b5ee20ac6629392872e"
+  integrity sha512-xybXIHQIZK2a1HH7ukMToRbIcU9LHfL49gtB0KYptY6f/r9lqrFOupN8aOBueRZW4Ymhc6HGL9bvj7u7t5lDdQ==
+  dependencies:
+    "@openzeppelin/defender-sdk-base-client" "^1.10.0"
+    "@openzeppelin/defender-sdk-deploy-client" "^1.10.0"
+    "@openzeppelin/defender-sdk-network-client" "^1.10.0"
+    "@openzeppelin/upgrades-core" "^1.32.0"
     chalk "^4.1.0"
     debug "^4.1.1"
+    ethereumjs-util "^7.1.5"
     proper-lockfile "^4.1.1"
+    undici "^6.11.1"
 
-"@openzeppelin/platform-deploy-client@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/platform-deploy-client/-/platform-deploy-client-0.8.0.tgz#af6596275a19c283d6145f0128cc1247d18223c1"
-  integrity sha512-POx3AsnKwKSV/ZLOU/gheksj0Lq7Is1q2F3pKmcFjGZiibf+4kjGxr4eSMrT+2qgKYZQH1ZLQZ+SkbguD8fTvA==
-  dependencies:
-    "@ethersproject/abi" "^5.6.3"
-    "@openzeppelin/defender-base-client" "^1.46.0"
-    axios "^0.21.2"
-    lodash "^4.17.19"
-    node-fetch "^2.6.0"
-
-"@openzeppelin/upgrades-core@^1.27.0":
+"@openzeppelin/upgrades-core@^1.32.0":
   version "1.34.3"
   resolved "https://registry.yarnpkg.com/@openzeppelin/upgrades-core/-/upgrades-core-1.34.3.tgz#e90ff4b3ba245dba31db47a90eb615d36580611c"
   integrity sha512-C84afQ0DOFBCAo/D9HRSD38hqBpmzCTcfLpZPzDbnpQt6/b3FkgNiGsxqD8DSE3mjnsMPtJdNnvP2Gq7hh0G5A==
@@ -3399,7 +3406,7 @@ ajv@^8.0.1:
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
 
-amazon-cognito-identity-js@^6.0.1:
+amazon-cognito-identity-js@^6.3.6:
   version "6.3.12"
   resolved "https://registry.yarnpkg.com/amazon-cognito-identity-js/-/amazon-cognito-identity-js-6.3.12.tgz#af73df033094ad4c679c19cf6122b90058021619"
   integrity sha512-s7NKDZgx336cp+oDeUtB2ZzT8jWJp/v2LWuYl+LQtMEODe22RF1IJ4nRiDATp+rp1pTffCZcm44Quw4jx2bqNg==
@@ -3746,14 +3753,14 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.13.0.tgz#d9b802e9bb9c248d7be5f7f5ef178dc3684e9dcc"
   integrity sha512-3AungXC4I8kKsS9PuS4JH2nc+0bVY/mjgrephHTIi8fpEeGsTHBUJeosp0Wc1myYMElmD0B3Oc4XL/HVJ4PV2g==
 
-axios@^0.21.0, axios@^0.21.2:
+axios@^0.21.0:
   version "0.21.4"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
   integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
   dependencies:
     follow-redirects "^1.14.0"
 
-axios@^1.4.0, axios@^1.6.7:
+axios@^1.6.7, axios@^1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.2.tgz#b625db8a7051fbea61c35a3cbb3a1daa7b9c7621"
   integrity sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==
@@ -9141,7 +9148,7 @@ lodash@=4.17.4:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
   integrity sha512-6X37Sq9KCpLSXEh8uM12AKYlviHPNNk4RxiGBn4cmKGJinbXBneWIV7iE/nXkM928O7ytHcHb6+X6Svl0f4hXg==
 
-lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.21, lodash@^4.17.4:
+lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.21, lodash@^4.17.4:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -9804,7 +9811,7 @@ node-fetch@^1.0.1, node-fetch@~1.7.1:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 
-node-fetch@^2.6.0, node-fetch@^2.6.1, node-fetch@^2.6.12, node-fetch@^2.6.7:
+node-fetch@^2.6.1, node-fetch@^2.6.12, node-fetch@^2.6.7:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
   integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==
@@ -12590,6 +12597,11 @@ undici@^5.14.0:
   integrity sha512-72RFADWFqKmUb2hmmvNODKL3p9hcB6Gt2DOQMis1SEBaV6a4MH8soBvzg+95CYhCKPFedut2JY9bMfrDl9D23g==
   dependencies:
     "@fastify/busboy" "^2.0.0"
+
+undici@^6.11.1:
+  version "6.19.2"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-6.19.2.tgz#231bc5de78d0dafb6260cf454b294576c2f3cd31"
+  integrity sha512-JfjKqIauur3Q6biAtHJ564e3bWa8VvT+7cSiOJHFbX4Erv6CLGDpg8z+Fmg/1OI/47RA+GI2QZaF48SSaLvyBA==
 
 unfetch@^4.2.0:
   version "4.2.0"
