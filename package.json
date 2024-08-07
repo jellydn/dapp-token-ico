@@ -17,7 +17,7 @@
     "package.json": "sort-package-json"
   },
   "dependencies": {
-    "@tailwindcss/typography": "0.5.13",
+    "@tailwindcss/typography": "0.5.14",
     "@web3-react/core": "6.1.9",
     "@web3-react/injected-connector": "6.0.7",
     "@web3-react/network-connector": "6.2.9",
@@ -62,10 +62,10 @@
     "solhint": "5.0.3",
     "solidity-coverage": "0.8.12",
     "sort-package-json": "2.10.0",
-    "tailwindcss": "3.4.7",
+    "tailwindcss": "3.4.8",
     "typechain": "8.3.2",
     "typescript": "5.5.4",
-    "vite": "5.3.5"
+    "vite": "5.4.0"
   },
   "packageManager": "yarn@1.22.22",
   "engines": {
