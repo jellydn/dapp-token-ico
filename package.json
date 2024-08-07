@@ -52,7 +52,7 @@
     "dotenv": "16.4.5",
     "ethereum-waffle": "4.0.10",
     "ethers": "5.7.2",
-    "hardhat": "2.22.7",
+    "hardhat": "2.22.8",
     "hardhat-gas-reporter": "2.2.0",
     "husky": "9.1.4",
     "lint-staged": "15.2.8",
