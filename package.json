@@ -54,7 +54,7 @@
     "ethers": "5.7.2",
     "hardhat": "2.22.8",
     "hardhat-gas-reporter": "2.2.1",
-    "husky": "9.1.4",
+    "husky": "9.1.5",
     "lint-staged": "15.2.9",
     "postcss": "8.4.41",
     "rustywind": "0.22.0",
@@ -65,7 +65,7 @@
     "tailwindcss": "3.4.10",
     "typechain": "8.3.2",
     "typescript": "5.5.4",
-    "vite": "5.4.1"
+    "vite": "5.4.2"
   },
   "packageManager": "yarn@1.22.22",
   "engines": {
