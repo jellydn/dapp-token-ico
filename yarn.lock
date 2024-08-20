@@ -8109,10 +8109,10 @@ human-signals@^5.0.0:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-5.0.0.tgz#42665a284f9ae0dade3ba41ebc37eb4b852f3a28"
   integrity sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==
 
-husky@9.1.4:
-  version "9.1.4"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-9.1.4.tgz#926fd19c18d345add5eab0a42b2b6d9a80259b34"
-  integrity sha512-bho94YyReb4JV7LYWRWxZ/xr6TtOTt8cMfmQ39MQYJ7f/YE268s3GdghGwi+y4zAeqewE5zYLvuhV0M0ijsDEA==
+husky@9.1.5:
+  version "9.1.5"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-9.1.5.tgz#2b6edede53ee1adbbd3a3da490628a23f5243b83"
+  integrity sha512-rowAVRUBfI0b4+niA4SJMhfQwc107VLkBUgEYYAOQAbqDCnra1nYh83hF/MDmhYs9t9n1E3DuKOrs2LYNC+0Ag==
 
 iconv-lite@0.4.24:
   version "0.4.24"
@@ -11212,7 +11212,7 @@ rlp@^2.0.0, rlp@^2.2.1, rlp@^2.2.2, rlp@^2.2.3, rlp@^2.2.4:
   dependencies:
     bn.js "^5.2.0"
 
-rollup@^4.13.0:
+rollup@^4.20.0:
   version "4.21.0"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-4.21.0.tgz#28db5f5c556a5180361d35009979ccc749560b9d"
   integrity sha512-vo+S/lfA2lMS7rZ2Qoubi6I5hwZwzXeUIctILZLbHI+laNtvhhOIon2S1JksA5UEDQ7l3vberd0fxK44lTYjbQ==
@@ -12918,14 +12918,14 @@ viem@2.7.14:
     isows "1.0.3"
     ws "8.13.0"
 
-vite@5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-5.4.1.tgz#2aa72370de824d23f53658affd807e4c9905b058"
-  integrity sha512-1oE6yuNXssjrZdblI9AfBbHCC41nnyoVoEZxQnID6yvQZAFBzxxkqoFLtHUMkYunL8hwOLEjgTuxpkRxvba3kA==
+vite@5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-5.4.2.tgz#8acb6ec4bfab823cdfc1cb2d6c53ed311bc4e47e"
+  integrity sha512-dDrQTRHp5C1fTFzcSaMxjk6vdpKvT+2/mIdE07Gw2ykehT49O0z/VHS3zZ8iV/Gh8BJJKHWOe5RjaNrW5xf/GA==
   dependencies:
     esbuild "^0.21.3"
     postcss "^8.4.41"
-    rollup "^4.13.0"
+    rollup "^4.20.0"
   optionalDependencies:
     fsevents "~2.3.3"
 
