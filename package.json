@@ -61,7 +61,7 @@
     "solgraph": "1.0.2",
     "solhint": "5.0.3",
     "solidity-coverage": "0.8.13",
-    "sort-package-json": "2.10.1",
+    "sort-package-json": "3.7.0",
     "tailwindcss": "3.4.14",
     "typechain": "8.3.2",
     "typescript": "5.6.3",
