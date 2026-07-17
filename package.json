@@ -62,7 +62,7 @@
     "solhint": "5.0.3",
     "solidity-coverage": "0.8.13",
     "sort-package-json": "2.10.1",
-    "tailwindcss": "3.4.14",
+    "tailwindcss": "4.3.3",
     "typechain": "8.3.2",
     "typescript": "5.6.3",
     "vite": "5.4.10"
