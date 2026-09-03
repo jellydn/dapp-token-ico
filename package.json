@@ -31,7 +31,7 @@
     "web3-react": "5.0.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.5.12",
     "@nomicfoundation/hardhat-ethers": "3.0.8",
     "@nomicfoundation/hardhat-verify": "2.0.11",
     "@nomiclabs/hardhat-ethers": "2.2.3",
